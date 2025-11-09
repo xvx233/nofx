@@ -524,8 +524,8 @@ func (s *Server) handleCreateTrader(c *gin.Context) {
 
 	// 设置扫描间隔默认值
 	scanIntervalMinutes := req.ScanIntervalMinutes
-	if scanIntervalMinutes < 3 {
-		scanIntervalMinutes = 3 // 默认3分钟，且不允许小于3
+	if scanIntervalMinutes <= 1 {
+		scanIntervalMinutes = 3 // 默认3分钟
 	}
 
 	// ✨ 查询交易所实际余额，覆盖用户输入
